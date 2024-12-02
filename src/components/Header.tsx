@@ -22,7 +22,7 @@ export default function header() {
   const pathname = usePathname();
   return (
     <div className="absolute w-full z-10">
-      <div className="flex justify-between container mx-auto text-white p-8">
+      <div className="flex justify-between items-center container mx-auto text-white p-8">
         <Link href="/" className="text-3xl font-bold">
           Home
         </Link>
