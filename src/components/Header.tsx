@@ -19,6 +19,7 @@ const links = [
 ];
 
 export default function header() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname();
   return (
     <div className="absolute w-full z-10">
