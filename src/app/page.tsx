@@ -7,7 +7,7 @@ import Hero from "@/components/Hero";
  * 
  * <meta name="title" content={metaData.title} />
  */
-export const metaData:Metadata = {
+export const metadata:Metadata = {
   title: "Home",
 };
 
