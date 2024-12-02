@@ -1,10 +1,5 @@
 import React from "react";
-import { Button } from "antd";
 
 export default function Home() {
-  return (
-    <div>
-      <Button type="primary">Button</Button>
-    </div>
-  );
+  return <div className="flex mt-6 p-6 bg-gray-500 text-white rounded-lg h-32">@children</div>;
 }
