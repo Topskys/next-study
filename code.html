@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码输入框</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .input-field {
+            width: fit-content;
+            padding: 10px;
+            margin: 10px;
+            border: 1px dashed gray;
+            border-radius: 4px;
+        }
+
+        .input-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .input-field input[type="text"] {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-field">
+        <div class="input-label">输入验证码</div>
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+    </div>
+    <script>
+        const inputs = document.querySelectorAll(".input-field input");
+
+        inputs.forEach((v, i) => {
+            v.addEventListener("input", function () {
+                const value = this.value;
+                if (value.length === 1) {
+                    const nextIndex = i + 1;
+                    if (nextIndex < inputs.length) {
+                        const nextInput = inputs[nextIndex];
+                        nextInput.focus();
+                    }
+                }
+            })
+
+            v.addEventListener("keydown", function (e) {
+                if (e.key === 'Backspace') {
+                    const value = this.value
+                    if (value.length === 0) {
+                        const prevIndex = i - 1;
+                        if (prevIndex >= 0) {
+                            const prevInput = inputs[prevIndex];
+                            prevInput.focus();
+                            prevInput.select();
+                        }
+                    }
+                }
+            })
+
+            // 监听输入框的粘贴事件
+            v.addEventListener("paste", function (event) {
+                const index = i;
+                const pasteData = event.clipboardData.getData('text/plain');
+                const codeLength = pasteData.length;
+                const startIndex = index - (codeLength - 1);
+
+                // 清空从粘贴起始位置到当前输入框之间的所有输入框
+                for (let i = startIndex; i <= index; i++) {
+                    if (i >= 0 && i < inputs.length) {
+                        inputs[i].value = '';
+                    }
+                }
+
+                // 将粘贴的文本分配到各个输入框中
+                for (let i = 0; i < codeLength && index + i < inputs.length; i++) {
+                    inputs[index + i].value = pasteData[i];
+                }
+
+                // 将焦点移动到最后一个被填充的输入框上
+                const lastFilledInput = inputs[index + codeLength - 1];
+                if (lastFilledInput) {
+                    lastFilledInput.focus();
+                }
+
+                // 阻止默认粘贴行为
+                event.preventDefault();
+            });
+        })
+
+
+    </script>
+</body>
+
+</html>
