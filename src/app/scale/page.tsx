@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div>Dashboard Page</div>
+    <div>Scale page</div>
   )
 }
