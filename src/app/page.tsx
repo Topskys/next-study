@@ -1,5 +1,15 @@
+import { Metadata } from "next";
 import image from "../../public/1.png";
 import Hero from "@/components/Hero";
+
+/**
+ * 元数据（静态）
+ * 
+ * <meta name="title" content={metaData.title} />
+ */
+export const metaData:Metadata = {
+  title: "Home",
+};
 
 export default function Home() {
   return (
