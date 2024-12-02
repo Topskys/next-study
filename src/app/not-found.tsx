@@ -1,6 +1,10 @@
 import Link from "next/link";
 import React from "react";
-// https://www.creative-tim.com/twcomponents/components/404-not-found-page
+
+/**
+ * 自定义全局404页面
+ * 组件模板：https://www.creative-tim.com/twcomponents/components/404-not-found-page
+ */
 export default function NotFound() {
   return (
     <div className="h-screen w-screen flex items-center not-found container mx-auto">
