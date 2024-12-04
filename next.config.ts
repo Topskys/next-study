@@ -2,7 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  reactStrictMode: true, // 严格模式，默认开启
+  images: {
+    // 优化：防止外部图片加载报错
+    remotePatterns: [
+      {
+        hostname: "tailwindui.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
