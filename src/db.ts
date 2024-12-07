@@ -1,6 +1,6 @@
 import { JSONFilePreset } from "lowdb/node";
 
-type Posts = {
+export type Posts = {
   id: string;
   title: string;
   content: string;

@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { id, ...rest } = v;
         return Object.values(rest).some((v) => {
-          query = query.toLowerCase();
+          query = query?.toLowerCase();
           return String(v).toLowerCase().includes(query);
         });
       })
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     code: 0,
-    data: filterData,
+    data: { list: filterData, total: query ? filterData.length : data.length },
     message: "success",
   });
 }
