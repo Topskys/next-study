@@ -44,6 +44,7 @@ export default function Page() {
     },
     query: "",
   });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [fields, setFields] = useState<any>();
 
   useEffect(() => {
